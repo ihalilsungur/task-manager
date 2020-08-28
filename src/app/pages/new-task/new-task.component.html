@@ -1,0 +1,29 @@
+<div class="container top">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input [(ngModel)]="newTask.title" type="text" class="form-control" placeholder="Title"
+                    aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Note " aria-label="Node "
+                    aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                    <button (click)="onAddTask()" class="btn btn-primary"> Add Task</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

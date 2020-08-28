@@ -1,0 +1,119 @@
+<div class="container home-page">
+    <div class="row">
+        <div class="col-md-12 top-part">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary prevButton" (click)="onPrevMonth()">İleri</button>
+                    <span style="font-weight: bold;"> {{ month.title }} &nbsp; {{ month.year}} </span>
+                    <button class="btn btn-primary nextButton" (click)="onNextMonth()"> Next </button>
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="col-md-6">
+            <table style="width:50%">
+                <tr>
+                    <th *ngFor='let weekDay of weekDays' [ngClass]="weekDay.style">{{ weekDay.title }}</th>
+                </tr>
+
+                <tr *ngFor='let w of month.weeks'>
+                    <td *ngFor='let day of w.days'>
+                        <button class="btn btn-success calendar-button" [hidden]='!day.title'
+                            (click)="onSelectDay(day)"> {{ day.title }} </button>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="col-md-6">
+
+            <div *ngIf='selectedDay'>
+                <span style="font-weight: bold;margin-bottom: 50px;margin-left: 50px;">
+                    Seçilen Notun Tarihi {{ selectedDay.title }}</span>
+
+                <table *ngIf='selectedDay.tasks.length > 0'>
+                    <tr>
+                        <th> Title </th>
+                        <th> Note </th>
+                    </tr>
+
+                    <tr *ngFor='let task of selectedDay.tasks'>
+                        <td>
+                         
+                            <div class="input-group mb-3">
+                                <input type="text" [disabled]="task.mode === 'show'" [(ngModel)]="task.title"
+                                    class="form-control" placeholder="Notun Başlığını Giriniz"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            </div>
+                        </td>
+
+                        <td>
+                           
+                            <div class="input-group mb-3">
+                                <input type="text" [disabled]="task.mode === 'show'" [(ngModel)]="task.note"
+                                    class="form-control" placeholder="Notun Başlığını Giriniz"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            </div>
+
+                        </td>
+
+                        <td>
+                            <button *ngIf="task.mode === 'show'" (click)="onEditTask(task)" class="btn btn-success"
+                                style="padding-bottom: 30px;margin-top: -20%;"> Edit </button>
+                            <button *ngIf="task.mode === 'edit'" (click)="onSaveEditTask(task)" class="btn btn-primary"
+                                style="padding-bottom: 30px;margin-top: -20%;"> Save </button>
+                        </td>
+
+                    </tr>
+
+                </table>
+
+                <br>
+
+                <div>
+                  
+                    <div class="container add-task">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <input [(ngModel)]="newTask.title" type="text" class="form-control"
+                                        placeholder="Title" aria-label="title" aria-describedby="basic-addon1">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" [(ngModel)]="newTask.note" class="form-control"
+                                        placeholder="Note " aria-label="Node " aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-md-9"></div>
+                                    <div class="col-md-3">
+                                        <button (click)="onAddTask()" 
+                                        style="padding-bottom: 30px;"
+                                        class="btn btn-primary"> Add Task</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,36 @@
+.home-page{
+    margin-top: 10%;
+}
+
+.top-part{
+    margin-bottom:5%
+}
+.red{
+    color: red;
+}
+
+button {
+    min-width: 75px;
+    height: 25px;
+}
+
+td{
+    text-align: center;
+}
+
+.prevButton{
+    padding: 5px 7px 30px 7px;
+    font-weight: bold;
+    margin-right: 2%;
+}
+
+.nextButton{
+    padding:5px 7px 30px 7px;
+    font-weight: bold;
+    margin-left: 2%;
+
+}
+.calendar-button{
+    padding-bottom: 30px ;
+    font-weight: bold;
+}
